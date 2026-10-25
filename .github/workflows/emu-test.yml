@@ -1,0 +1,59 @@
+# بيشغّل تطبيق الكابتن على محاكي أندرويد ويحفظ سجل الأعطال (logcat) في فرع emu-log
+name: emu-test
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  emu:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with: { distribution: temurin, java-version: '17' }
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '8.11.1' }
+      - name: Icons
+        run: |
+          pip install --quiet pillow
+          python3 tools/make_icons.py app/src
+      - name: Build debug APKs
+        run: gradle --no-daemon assembleCaptainDebug assembleClientDebug
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
+      - name: Run on emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          arch: x86_64
+          target: google_apis
+          disable-animations: true
+          script: |
+            mkdir -p /tmp/emu
+            adb logcat -c
+            adb install -r app/build/outputs/apk/captain/debug/*.apk
+            adb shell monkey -p com.yasseryahia.captain -c android.intent.category.LAUNCHER 1
+            sleep 25
+            adb logcat -d > /tmp/emu/captain-logcat.txt || true
+            adb shell dumpsys activity activities | head -80 > /tmp/emu/captain-activities.txt || true
+            adb exec-out screencap -p > /tmp/emu/captain-screen.png || true
+            adb logcat -c
+            adb install -r app/build/outputs/apk/client/debug/*.apk
+            adb shell monkey -p com.yasseracademy.app -c android.intent.category.LAUNCHER 1
+            sleep 25
+            adb logcat -d > /tmp/emu/client-logcat.txt || true
+            adb exec-out screencap -p > /tmp/emu/client-screen.png || true
+      - name: Publish logs
+        if: always()
+        run: |
+          cd /tmp/emu || exit 0
+          grep -n -A40 "FATAL EXCEPTION" captain-logcat.txt > captain-crash.txt || echo "no crash" > captain-crash.txt
+          grep -n -A40 "FATAL EXCEPTION" client-logcat.txt > client-crash.txt || echo "no crash" > client-crash.txt
+          git init -q -b emu-log
+          git config user.name "android-build"; git config user.email "actions@github.com"
+          git add -A; git commit -q -m "emu log ${{ github.sha }}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" emu-log
