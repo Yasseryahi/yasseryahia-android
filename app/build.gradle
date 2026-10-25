@@ -1,0 +1,59 @@
+// تطبيقين على أندرويد (كابتن + عميل) — كل واحد «غلاف» للصفحة نفسها من الموقع (Trusted Web Activity)
+// أي تحديث على الموقع بيوصل التطبيق على طول. البناء على GitHub Actions (.github/workflows/android-twa.yml)
+// والتوقيع بيتعمل برّه (مفتاح الرفع مش في الريبو).
+plugins { id 'com.android.application' }
+
+def vCode = (project.findProperty('vCode') ?: '101') as int
+
+android {
+    namespace 'com.yasseryahia.twa'
+    compileSdk 36
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 36
+        versionCode vCode
+        versionName "1.0.${vCode}"
+        manifestPlaceholders = [hostName: 'yasseryahia.com']
+    }
+
+    flavorDimensions = ['app']
+    productFlavors {
+        captain {
+            dimension 'app'
+            applicationId 'com.yasseryahia.captain'
+            manifestPlaceholders += [
+                defaultUrl : 'https://yasseryahia.com/captain_app.php?source=pwa&twa=1',
+                launcherName: 'كابتن ياسر يحيى',
+                themeColor : '#0B2A22',
+                navColor   : '#FFFFFF',
+                splashColor: '#0B2A22',
+            ]
+        }
+        client {
+            dimension 'app'
+            applicationId 'com.yasseryahia.academy'
+            manifestPlaceholders += [
+                defaultUrl : 'https://yasseryahia.com/client_app.php?source=pwa&twa=1',
+                launcherName: 'أكاديمية ياسر يحيى',
+                themeColor : '#C42026',
+                navColor   : '#FFFFFF',
+                splashColor: '#FFFFFF',
+            ]
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.5.0'
+}

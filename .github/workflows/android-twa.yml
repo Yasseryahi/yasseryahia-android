@@ -1,0 +1,48 @@
+# بيبني تطبيقين أندرويد (كابتن + عميل) كملفات AAB من غير توقيع ويحطهم في فرع android-dist.
+# التوقيع بمفتاح الرفع بيتعمل برّه (المفتاح مش في الريبو). مفيش أسرار هنا.
+name: android-twa
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['README.md']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: { group: android-twa, cancel-in-progress: true }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '8.11.1' }
+      - name: Icons
+        working-directory: .
+        run: |
+          pip install --quiet pillow
+          python3 tools/make_icons.py app/src
+      - name: Build
+        working-directory: .
+        run: |
+          VC=$((100 + ${{ github.run_number }}))
+          echo "VC=$VC" >> $GITHUB_ENV
+          gradle --no-daemon -PvCode=$VC bundleCaptainRelease bundleClientRelease
+      - name: Publish to android-dist
+        run: |
+          mkdir -p /tmp/dist
+          cp app/build/outputs/bundle/captainRelease/*.aab /tmp/dist/captain-unsigned.aab
+          cp app/build/outputs/bundle/clientRelease/*.aab  /tmp/dist/client-unsigned.aab
+          cp app/src/captain/play_icon_512.png /tmp/dist/captain-icon-512.png
+          cp app/src/client/play_icon_512.png  /tmp/dist/client-icon-512.png
+          echo "versionCode=$VC run=${{ github.run_number }} sha=${{ github.sha }}" > /tmp/dist/BUILD.txt
+          cd /tmp/dist
+          git init -q -b android-dist
+          git config user.name "android-build"; git config user.email "actions@github.com"
+          git add -A; git commit -q -m "android build $VC (${{ github.sha }})"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" android-dist
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: android-aab, path: /tmp/dist, if-no-files-found: ignore }
