@@ -32,7 +32,7 @@ android {
         }
         client {
             dimension 'app'
-            applicationId 'com.yasseryahia.academy'
+            applicationId 'com.yasseracademy.app'
             manifestPlaceholders += [
                 defaultUrl : 'https://yasseryahia.com/client_app.php?source=pwa&twa=1',
                 launcherName: 'أكاديمية ياسر يحيى',
