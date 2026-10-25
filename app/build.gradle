@@ -25,9 +25,6 @@ android {
             manifestPlaceholders += [
                 defaultUrl : 'https://yasseryahia.com/captain_app.php?source=pwa&twa=1',
                 launcherName: 'كابتن ياسر يحيى',
-                themeColor : '#0B2A22',
-                navColor   : '#FFFFFF',
-                splashColor: '#0B2A22',
             ]
         }
         client {
@@ -36,9 +33,6 @@ android {
             manifestPlaceholders += [
                 defaultUrl : 'https://yasseryahia.com/client_app.php?source=pwa&twa=1',
                 launcherName: 'أكاديمية ياسر يحيى',
-                themeColor : '#C42026',
-                navColor   : '#FFFFFF',
-                splashColor: '#FFFFFF',
             ]
         }
     }
