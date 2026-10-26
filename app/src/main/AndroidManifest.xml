@@ -44,11 +44,15 @@
             android:name="com.google.androidbrowserhelper.trusted.DelegationService"
             android:enabled="true"
             android:exported="true">
+            <meta-data android:name="android.support.customtabs.trusted.SMALL_ICON" android:resource="@drawable/ic_notif" />
             <intent-filter>
                 <action android:name="android.support.customtabs.trusted.TRUSTED_WEB_ACTIVITY_SERVICE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
+
+        <!-- أندرويد 13+: طلب إذن الإشعارات من الموقع بيعدّي على الشاشة دي (من غيرها زرار «فعّل الإشعارات» مابيعملش حاجة) -->
+        <activity android:name="com.google.androidbrowserhelper.trusted.NotificationPermissionRequestActivity" android:exported="false" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
