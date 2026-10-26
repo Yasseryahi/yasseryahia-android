@@ -1,0 +1,80 @@
+ACTIVITY MANAGER ACTIVITIES (dumpsys activity activities)
+Display #0 (activities from top to bottom):
+  * Task{72fbedd #9 type=standard A=10149:com.android.chrome U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+    mLastPausedActivity: ActivityRecord{a37d2b4 u0 com.android.chrome/com.google.android.apps.chrome.IntentDispatcher t-1 f}}
+    mLastNonFullscreenBounds=Rect(77, 172 - 243, 492)
+    isSleeping=false
+    topResumedActivity=ActivityRecord{18fb655 u0 com.android.chrome/org.chromium.chrome.browser.firstrun.FirstRunActivity t9}
+    * Hist  #0: ActivityRecord{18fb655 u0 com.android.chrome/org.chromium.chrome.browser.firstrun.FirstRunActivity t9}
+      packageName=com.android.chrome processName=com.android.chrome
+      launchedFromUid=10149 launchedFromPackage=com.android.chrome launchedFromFeature=null userId=0
+      app=ProcessRecord{2331c29 2714:com.android.chrome/u0a149}
+      Intent { flg=0x800000 cmp=com.android.chrome/org.chromium.chrome.browser.firstrun.FirstRunActivity (has extras) }
+      rootOfTask=true task=Task{72fbedd #9 type=standard A=10149:com.android.chrome}
+      taskAffinity=10149:com.android.chrome
+      mActivityComponent=com.android.chrome/org.chromium.chrome.browser.firstrun.FirstRunActivity
+      baseDir=/data/app/~~BpOAHINl3jP3GTZYSj_96g==/com.android.chrome-6VFzkbrQ2U5k_n7-LD9qyg==/Chrome.apk
+      dataDir=/data/user/0/com.android.chrome
+      stateNotNeeded=false componentSpecified=false mActivityType=standard
+      compat={160dpi} labelRes=0x7f14051c icon=0x7f09027c theme=0x7f1504c9
+      mLastReportedConfigurations:
+        mGlobalConfig={1.0 310mcc260mnc [en_US] ldltr sw320dp w320dp h616dp 160dpi nrml long port finger qwerty/v/v -nav/h winConfig={ mBounds=Rect(0, 0 - 320, 640) mAppBounds=Rect(0, 0 - 320, 640) mMaxBounds=Rect(0, 0 - 320, 640) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} as.2 s.36 fontWeightAdjustment=0}
+        mOverrideConfig={1.0 310mcc260mnc [en_US] ldltr sw320dp w320dp h616dp 160dpi nrml long port finger qwerty/v/v -nav/h winConfig={ mBounds=Rect(0, 0 - 320, 640) mAppBounds=Rect(0, 0 - 320, 640) mMaxBounds=Rect(0, 0 - 320, 640) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} as.2 s.2 fontWeightAdjustment=0}
+      CurrentConfiguration={1.0 310mcc260mnc [en_US] ldltr sw320dp w320dp h616dp 160dpi nrml long port finger qwerty/v/v -nav/h winConfig={ mBounds=Rect(0, 0 - 320, 640) mAppBounds=Rect(0, 0 - 320, 640) mMaxBounds=Rect(0, 0 - 320, 640) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} as.2 s.2 fontWeightAdjustment=0}
+      taskDescription: label="null" icon=null iconResource=/0 iconFilename=null primaryColor=ffffffff
+        backgroundColor=ffffffff statusBarColor=ff000000 navigationBarColor=ffffffff
+       backgroundColorFloating=ffffffff
+      launchFailed=false launchCount=1 lastLaunchTime=-20s462ms
+      mHaveState=false mIcicle=null
+      state=RESUMED delayedResume=false finishing=false
+      keysPaused=false inHistory=true idle=true
+      occludesParent=true noDisplay=false immersive=false launchMode=1
+      frozenBeforeDestroy=false forceNewConfig=false
+      mActivityType=standard
+      mImeInsetsFrozenUntilStartInput=false
+      windows=[Window{1efa1d8 u0 com.android.chrome/org.chromium.chrome.browser.firstrun.FirstRunActivity}]
+      windowType=2 waitingToShow=true
+      mOccludesParent=true
+      overrideOrientation=SCREEN_ORIENTATION_UNSPECIFIED
+      requestedOrientation=SCREEN_ORIENTATION_UNSPECIFIED
+      mVisibleRequested=true mVisible=true mClientVisible=true reportedDrawn=true reportedVisible=true
+      mNumInterestingWindows=1 mNumDrawnWindows=1 allDrawn=true lastAllDrawn=true)
+      startingData=null firstWindowDrawn=true mIsExiting=false
+      nowVisible=true lastVisibleTime=-19s615ms
+      resizeMode=RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION
+      mLastReportedMultiWindowMode=false mLastReportedPictureInPictureMode=false
+      supportsSizeChanges=SIZE_CHANGES_UNSUPPORTED_METADATA
+      configChanges=0xdb3
+      neverSandboxDisplayApis=false
+      alwaysSandboxDisplayApis=false
+      areBoundsLetterboxed=false
+      mCameraCompatControlState=hidden
+      mCameraCompatControlEnabled=true
+
+  * Task{83ee15f #8 type=standard A=10192:com.yasseryahia.captain U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+    mLastPausedActivity: ActivityRecord{4220bf4 u0 com.android.chrome/com.google.android.apps.chrome.IntentDispatcher t-1 f}}
+    mLastNonFullscreenBounds=Rect(77, 172 - 243, 492)
+    isSleeping=false
+    * Hist  #0: ActivityRecord{6b10197 u0 com.yasseryahia.captain/com.google.androidbrowserhelper.trusted.LauncherActivity t8}
+      packageName=com.yasseryahia.captain processName=com.yasseryahia.captain
+      launchedFromUid=2000 launchedFromPackage=com.android.shell launchedFromFeature=null userId=0
+      app=ProcessRecord{afa1b5e 2537:com.yasseryahia.captain/u0a192}
+      Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.yasseryahia.captain/com.google.androidbrowserhelper.trusted.LauncherActivity }
+      rootOfTask=true task=Task{83ee15f #8 type=standard A=10192:com.yasseryahia.captain}
+      taskAffinity=10192:com.yasseryahia.captain
+      mActivityComponent=com.yasseryahia.captain/com.google.androidbrowserhelper.trusted.LauncherActivity
+      baseDir=/data/app/~~U_cUOk-kQzXzA9zlRD32gw==/com.yasseryahia.captain-4EGeL112ClnjAVfH_3Gd6A==/base.apk
+      dataDir=/data/user/0/com.yasseryahia.captain
+      stateNotNeeded=false componentSpecified=false mActivityType=standard
+      compat={160dpi} labelRes=0x0 icon=0x7f080000 theme=0x1030010
+      mLastReportedConfigurations:
+        mGlobalConfig={1.0 310mcc260mnc [en_US] ldltr sw320dp w320dp h616dp 160dpi nrml long port finger qwerty/v/v -nav/h winConfig={ mBounds=Rect(0, 0 - 320, 640) mAppBounds=Rect(0, 0 - 320, 640) mMaxBounds=Rect(0, 0 - 320, 640) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} as.2 s.36 fontWeightAdjustment=0}
+        mOverrideConfig={1.0 310mcc260mnc [en_US] ldltr sw320dp w320dp h616dp 160dpi nrml long port finger qwerty/v/v -nav/h winConfig={ mBounds=Rect(0, 0 - 320, 640) mAppBounds=Rect(0, 0 - 320, 640) mMaxBounds=Rect(0, 0 - 320, 640) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} as.2 s.2 fontWeightAdjustment=0}
+      CurrentConfiguration={1.0 310mcc260mnc [en_US] ldltr sw320dp w320dp h616dp 160dpi nrml long port finger qwerty/v/v -nav/h winConfig={ mBounds=Rect(0, 0 - 320, 640) mAppBounds=Rect(0, 0 - 320, 640) mMaxBounds=Rect(0, 0 - 320, 640) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} as.2 s.2 fontWeightAdjustment=0}
+      RequestedOverrideConfiguration={0.0 ?mcc0mnc ?localeList ?layoutDir ?swdp ?wdp ?hdp ?density ?lsize ?long ?ldr ?wideColorGamut ?orien ?uimode ?night ?touch ?keyb/?/? ?nav/? winConfig={ mBounds=Rect(0, 0 - 0, 0) mAppBounds=null mMaxBounds=Rect(0, 0 - 0, 0) mDisplayRotation=undefined mWindowingMode=undefined mDisplayWindowingMode=undefined mActivityType=standard mAlwaysOnTop=undefined mRotation=undefined} ?fontWeightAdjustment}
+      ResolvedOverrideConfiguration={0.0 ?mcc0mnc ?localeList ?layoutDir ?swdp ?wdp ?hdp ?density ?lsize ?long ?ldr ?wideColorGamut ?orien ?uimode ?night ?touch ?keyb/?/? ?nav/? winConfig={ mBounds=Rect(0, 0 - 0, 0) mAppBounds=null mMaxBounds=Rect(0, 0 - 0, 0) mDisplayRotation=undefined mWindowingMode=undefined mDisplayWindowingMode=undefined mActivityType=undefined mAlwaysOnTop=undefined mRotation=undefined} s.2 ?fontWeightAdjustment}
+      taskDescription: label="null" icon=null iconResource=/0 iconFilename=null primaryColor=ff222222
+        backgroundColor=ff000000 statusBarColor=ff0b2a22 navigationBarColor=ffffffff
+       backgroundColorFloating=ff000000
+      launchFailed=false launchCount=0 lastLaunchTime=-25s174ms
+      mHaveState=true mIcicle=Bundle[mParcelledData.dataSize=396]
